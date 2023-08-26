@@ -11,7 +11,7 @@ let secondValue = null;
 let time = document.getElementById("displayTime");
 const setTime = () => {
     setInterval(() => {
-        time.innerText = `Time: ${new Date().toLocaleTimeString()}`
+        time.innerHTML = `<i class="fa-regular fa-clock fa-spin"></i> ${new Date().toLocaleTimeString()}`
     }, 1000);
 }
 
@@ -19,7 +19,7 @@ setTime();
 
 const removeInputChr = () => {
     inputValue.innerText = inputValue.innerText.slice(0, - 1);
-    disFirstInput.innerText = `Current Value: ${inputValue.innerText}`
+    disFirstInput.innerText = `Current Value: ${inputValue.innerText}`;
     firstValue = parseFloat(inputValue.innerText);
 }
 
@@ -33,7 +33,7 @@ const setInputValue = (value) => {
     }
     else {
         firstValue = parseFloat(inputValue.innerText);
-        disFirstInput.innerText = `Current Value: ${firstValue}`
+        disFirstInput.innerText = `Current Value: ${firstValue}`;
     }
 }
 
@@ -44,6 +44,7 @@ const setSymbol = (curSymbol) => {
         disOperationInput.innerText = `Operation: ${curSymbol}`;
     }
     else {
+        firstValue = parseFloat(inputValue.innerText);
         inputValue.innerText = null;
         symbol = curSymbol;
         disOperationInput.innerText = `Operation: ${curSymbol}`;
@@ -52,37 +53,47 @@ const setSymbol = (curSymbol) => {
 
 const sum = () => {
     if (symbol === "+") {
-        inputValue.innerText = firstValue + secondValue;
+        inputValue.innerText = parseFloat(firstValue + secondValue);
         firstValue = parseFloat(inputValue.innerText);
-        disFirstInput.innerText = `Current Value: ${firstValue}`
+        disFirstInput.innerText = `Current Value: ${firstValue}`;
+        symbol = null;
+        disOperationInput.innerText = `Operation:`;
     }
     else if (symbol === "-") {
-        inputValue.innerText = firstValue - secondValue;
+        inputValue.innerText = parseFloat(firstValue - secondValue);
         firstValue = parseFloat(inputValue.innerText);
-        disFirstInput.innerText = `Current Value: ${firstValue}`
+        disFirstInput.innerText = `Current Value: ${firstValue}`;
+        symbol = null;
+        disOperationInput.innerText = `Operation:`;
     }
     else if (symbol === "*") {
-        inputValue.innerText = firstValue * secondValue;
+        inputValue.innerText = parseFloat(firstValue * secondValue);
         firstValue = parseFloat(inputValue.innerText);
-        disFirstInput.innerText = `Current Value: ${firstValue}`
+        disFirstInput.innerText = `Current Value: ${firstValue}`;
+        symbol = null;
+        disOperationInput.innerText = `Operation:`;
     }
     else if (symbol === "/") {
-        inputValue.innerText = firstValue / secondValue;
+        inputValue.innerText = parseFloat(firstValue / secondValue);
         firstValue = parseFloat(inputValue.innerText);
-        disFirstInput.innerText = `Current Value: ${firstValue}`
+        disFirstInput.innerText = `Current Value: ${firstValue}`;
+        symbol = null;
+        disOperationInput.innerText = `Operation:`;
     }
     else if (symbol === "%") {
         if (secondValue !== null) {
             inputValue.innerText = parseFloat((firstValue * secondValue) / 100);
             disFirstInput.innerText = `Current Value: ${inputValue.innerText}`
-            firstValue = null;
-            secondValue = null;
+            firstValue = parseFloat(inputValue.innerText);
+            symbol = null;
+            disOperationInput.innerText = `Operation:`;
         }
         else {
             inputValue.innerText = parseFloat(firstValue / 100);
-            disFirstInput.innerText = `Current Value: ${inputValue.innerText}`
-            firstValue = null;
-            secondValue = null;
+            disFirstInput.innerText = `Current Value: ${inputValue.innerText}`;
+            firstValue = parseFloat(inputValue.innerText);
+            symbol = null;
+            disOperationInput.innerText = `Operation:`;
         }
     }
 }

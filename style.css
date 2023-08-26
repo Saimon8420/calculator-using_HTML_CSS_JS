@@ -42,6 +42,17 @@ main {
     border-radius: 8px;
     background-color: white;
     text-align: left;
+    animation: 3s linear 0s 1 alternate sun-rise;
+}
+
+@keyframes sun-rise {
+    from {
+        transform: translateY(110vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
 
 h6,
@@ -104,12 +115,13 @@ h6 {
     align-items: center;
     text-align: left;
     width: 65%;
-    height: 40px;
+    height: 50px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     padding: 0px 5px;
     font-weight: 600;
     overflow-x: scroll;
     border-radius: 3px;
+    margin: 5px auto;
 }
 
 .eachSection {
